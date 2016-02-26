@@ -3,7 +3,7 @@ resource "tls_private_key" "deploy" {
     ecdsa_curve = "P384"
 }
 resource "template_file" "id_rsa" {
-    template = "${file("key.tpl")}"
+    template = "${file("${path.module}/key.tpl")}"
 
     vars {
         key = "${tls_private_key.deploy.private_key_pem}"
