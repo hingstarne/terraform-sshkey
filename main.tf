@@ -11,7 +11,7 @@ resource "template_file" "id_rsa" {
 }
 
 resource "template_file" "id_rsa_pub" {
-    template = "${file("key.tpl")}"
+    template = "${file("${path.module}/key.tpl")}"
 
     vars {
         key = "${tls_private_key.deploy.public_key_openssh}"
